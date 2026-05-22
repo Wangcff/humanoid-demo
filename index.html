@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>王长峰｜人形机器人强化学习运控 Demo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: #111;
+      color: #fff;
+      padding: 48px 8%;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+    header p {
+      margin-top: 12px;
+      color: #ddd;
+      font-size: 16px;
+    }
+    main {
+      max-width: 1080px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: 24px;
+      margin: 36px 0 18px;
+      border-left: 5px solid #111;
+      padding-left: 12px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    }
+    .card h3 {
+      margin-top: 0;
+      font-size: 21px;
+    }
+    .tag {
+      display: inline-block;
+      background: #eee;
+      color: #333;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin: 4px 4px 8px 0;
+    }
+    .video-box {
+      margin-top: 14px;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    video, iframe {
+      width: 100%;
+      height: 420px;
+      display: block;
+      border: none;
+    }
+    .footer {
+      text-align: center;
+      color: #666;
+      padding: 36px 0;
+      font-size: 14px;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 26px;
+      }
+      video, iframe {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>王长峰｜人形机器人强化学习运控 Demo</h1>
+  <p>Humanoid Robot Reinforcement Learning Motion Control Portfolio</p>
+  <p>方向：强化学习运动控制 / Sim-to-Real / 全身动作跟踪 / 实物部署</p>
+</header>
+
+<main>
+  <h2 class="section-title">Featured Demos</h2>
+
+  <div class="card">
+    <h3>K2 拟人大步长步态</h3>
+    <span class="tag">强化学习步态控制</span>
+    <span class="tag">Sim-to-Real</span>
+    <span class="tag">实物部署</span>
+    <p>
+      基于强化学习完成 K2 人形机器人拟人大步长步态训练、Sim-to-Sim 验证与真实机器人部署。
+      实现 0.8 m/s 稳定行走，步长约 1.5 个脚掌，出厂包压测 8 小时无异常。
+    </p>
+    <p><strong>我的工作：</strong>策略训练、实物部署、PD 参数调试、默认关节角补偿、稳定性优化。</p>
+
+    <div class="video-box">
+      <!-- 方法1：如果你有 mp4 直链，替换 src -->
+      <video controls>
+        <source src="videos/k2_walk.mp4" type="video/mp4">
+        当前浏览器不支持 video 标签。
+      </video>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>K2 太极舞蹈动作</h3>
+    <span class="tag">PHC / GMR 重定向</span>
+    <span class="tag">ASAP</span>
+    <span class="tag">全身动作跟踪</span>
+    <p>
+      基于 PHC / GMR 重定向框架完成人体动作到机器人关节空间映射，
+      基于 ASAP 框架完成训练、Sim-to-Sim 验证与真实机器人部署。
+      动作已完成功能测试并集成至产品中。
+    </p>
+    <p><strong>我的工作：</strong>动作重定向、reward 调试、Sim-to-Sim 验证、实物默认角补偿。</p>
+
+    <div class="video-box">
+      <video controls>
+        <source src="videos/k2_taichi.mp4" type="video/mp4">
+        当前浏览器不支持 video 标签。
+      </video>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>行者2号长距离行走与小跑</h3>
+    <span class="tag">长距离行走</span>
+    <span class="tag">小跑</span>
+    <span class="tag">实物调参</span>
+    <p>
+      配合行者2号机器人策略训练与实物调试，包括 PD 参数调节和关节角度补偿。
+      项目成果应用于 2025 年北京亦庄全球首场人形机器人半程马拉松比赛，团队获得第三名。
+    </p>
+    <p><strong>我的工作：</strong>配合策略训练、PD 参数调节、关节角度补偿、比赛前实物测试。</p>
+
+    <div class="video-box">
+      <video controls>
+        <source src="videos/walker2_marathon.mp4" type="video/mp4">
+        当前浏览器不支持 video 标签。
+      </video>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>其他运动能力展示</h3>
+    <span class="tag">小跑</span>
+    <span class="tag">无视野上楼梯</span>
+    <span class="tag">扭胯式行走</span>
+    <span class="tag">TWIST 上肢动作复现</span>
+    <p>
+      参与小跑、无视野上楼梯、扭胯式行走等运动能力开发；
+      参与 TWIST 全身遥操作框架链路打通，完成仿真端动作复现和实物端原地上肢动作复现验证。
+    </p>
+
+    <div class="video-box">
+      <video controls>
+        <source src="videos/other_demos.mp4" type="video/mp4">
+        当前浏览器不支持 video 标签。
+      </video>
+    </div>
+  </div>
+
+</main>
+
+<div class="footer">
+  © 2026 王长峰｜Humanoid Robot RL Motion Control Demo
+</div>
+
+</body>
+</html>
