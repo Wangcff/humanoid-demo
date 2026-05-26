@@ -6,397 +6,218 @@
   <title>王长峰｜人形机器人强化学习运控 Demo</title>
   <style>
     :root {
-      --bg: #f3f4f6;
-      --surface: #ffffff;
-      --surface-2: #f8f8f8;
-      --text: #151515;
-      --muted: #606060;
-      --light: #8a8a8a;
-      --line: #dedede;
-      --dark: #111111;
-      --dark-2: #242424;
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --dark: #111827;
       --kepler: #2563eb;
-      --kepler-soft: #eff6ff;
-      --kepler-line: #bfdbfe;
       --zhongyu: #059669;
-      --zhongyu-soft: #ecfdf5;
-      --zhongyu-line: #a7f3d0;
-      --joyson: #ea580c;
-      --joyson-soft: #fff7ed;
-      --joyson-line: #fed7aa;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-      --shadow-soft: 0 8px 26px rgba(0, 0, 0, 0.06);
+      --joyson: #d97706;
+      --shadow: 0 10px 28px rgba(17, 24, 39, 0.08);
+      --radius: 16px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30%),
-        radial-gradient(circle at 90% 12%, rgba(5, 150, 105, 0.10), transparent 24%),
-        radial-gradient(circle at 20% 92%, rgba(234, 88, 12, 0.10), transparent 28%),
-        linear-gradient(180deg, #ffffff 0%, var(--bg) 42%, #eeeeee 100%);
       color: var(--text);
+      background: var(--bg);
       line-height: 1.65;
     }
-
     a { color: inherit; text-decoration: none; }
 
-    .page {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 22px 48px;
-    }
-
     header {
-      background:
-        radial-gradient(circle at 14% 22%, rgba(37, 99, 235, 0.40), transparent 30%),
-        radial-gradient(circle at 74% 10%, rgba(5, 150, 105, 0.26), transparent 28%),
-        linear-gradient(135deg, #0f172a 0%, #1f2937 54%, #111111 100%);
-      color: #ffffff;
-      padding: 56px 0 34px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--dark);
+      color: #fff;
+      padding: 52px 20px 42px;
+      border-bottom: 4px solid #374151;
     }
-
     .hero {
-      max-width: 1180px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 0 22px;
-      display: grid;
-      grid-template-columns: 1.5fr 0.8fr;
-      gap: 34px;
-      align-items: end;
     }
-
     .eyebrow {
-      margin: 0 0 12px;
+      margin: 0 0 10px;
+      color: #cbd5e1;
       font-size: 13px;
-      color: #cfcfcf;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-
     h1 {
       margin: 0;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.15;
-      letter-spacing: 0.2px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.18;
     }
-
     .subtitle {
       margin: 16px 0 0;
-      color: #dfdfdf;
-      font-size: 17px;
-      max-width: 760px;
-    }
-
-    .hero-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-card strong {
-      display: block;
-      font-size: 15px;
-      margin-bottom: 8px;
-    }
-
-    .hero-card p {
-      margin: 6px 0;
-      color: #d8d8d8;
-      font-size: 14px;
+      max-width: 780px;
+      color: #d1d5db;
+      font-size: 16px;
     }
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(255, 255, 255, 0.86);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.92);
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
     }
-
     .nav-inner {
-      max-width: 1180px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 10px 22px;
+      padding: 10px 20px;
       display: flex;
       gap: 10px;
       overflow-x: auto;
     }
-
     .nav a {
       flex: none;
+      padding: 7px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 7px 12px;
-      background: #ffffff;
-      color: #333333;
+      background: #fff;
+      color: #374151;
       font-size: 13px;
-      transition: all 0.2s ease;
     }
+    .nav a:hover { border-color: #9ca3af; }
 
-    .nav a:hover {
-      background: linear-gradient(135deg, #111111, #334155);
-      color: #ffffff;
-      border-color: #111111;
-      transform: translateY(-1px);
+    main {
+      max-width: 1120px;
+      margin: 28px auto 48px;
+      padding: 0 20px;
     }
 
     .summary {
-      margin: 30px 0 24px;
-      background: var(--surface);
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      border-radius: var(--radius-lg);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 24px;
+      margin-bottom: 34px;
     }
-
-    .summary-title,
-    .section-title {
-      margin: 0 0 14px;
+    .summary h2 {
+      margin: 0 0 12px;
       font-size: 23px;
-      line-height: 1.2;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
-
-    .summary-title::before,
-    .section-title::before {
-      content: "";
-      width: 5px;
-      height: 24px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, #2563eb, #059669);
-      display: inline-block;
-    }
-
     .summary p {
       margin: 8px 0;
-      color: #353535;
+      color: #374151;
       font-size: 15px;
     }
-
     .metrics {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 20px;
+      margin-top: 18px;
     }
-
     .metric {
-      background: var(--surface-2);
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 12px;
       padding: 14px;
+      background: #fafafa;
     }
-
     .metric strong {
       display: block;
       font-size: 21px;
-      line-height: 1.2;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      color: #111827;
     }
-
     .metric span {
       display: block;
-      font-size: 13px;
       color: var(--muted);
+      font-size: 13px;
     }
 
     .company-section {
-      margin-top: 32px;
-      scroll-margin-top: 74px;
+      margin-top: 40px;
+      scroll-margin-top: 72px;
     }
-
-    .company-head {
-      position: relative;
-      overflow: hidden;
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 28px 32px;
-      margin-bottom: 22px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      align-items: center;
+    .company-title {
       text-align: center;
+      margin-bottom: 22px;
     }
-
-    .company-head::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 8px;
-      background: #111111;
-    }
-
-    .company-head::after {
-      content: "";
-      position: absolute;
-      right: -70px;
-      top: -90px;
-      width: 210px;
-      height: 210px;
-      border-radius: 999px;
-      opacity: 0.14;
-      background: #111111;
-      pointer-events: none;
-    }
-
-    .company-name {
-      position: relative;
-      margin: 0;
-      font-size: clamp(28px, 3.4vw, 42px);
-      line-height: 1.18;
-      letter-spacing: 0.02em;
-      font-weight: 800;
-    }
-
-    .company-meta {
-      position: relative;
+    .company-badge {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
-      width: fit-content;
-      margin: 12px auto 0;
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      padding: 7px 16px;
+      gap: 10px;
+      padding: 8px 16px;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      background: #111111;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
     }
-
-    .company-desc {
-      position: relative;
-      max-width: 880px;
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #9ca3af;
+    }
+    .company-title h2 {
+      margin: 14px 0 8px;
+      font-size: clamp(25px, 3.2vw, 34px);
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+    }
+    .company-title p {
       margin: 0 auto;
-      color: #333333;
-      font-size: 16px;
-      line-height: 1.75;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 15px;
     }
 
-    #kepler .company-head {
-      background: linear-gradient(135deg, #ffffff 0%, var(--kepler-soft) 100%);
-      border-color: var(--kepler-line);
-    }
-
-    #kepler .company-head::before,
-    #kepler .company-head::after,
-    #kepler .company-meta,
-    #kepler .level {
-      background: linear-gradient(135deg, var(--kepler), #1d4ed8);
-    }
-
-    #zhongyu .company-head {
-      background: linear-gradient(135deg, #ffffff 0%, var(--zhongyu-soft) 100%);
-      border-color: var(--zhongyu-line);
-    }
-
-    #zhongyu .company-head::before,
-    #zhongyu .company-head::after,
-    #zhongyu .company-meta,
-    #zhongyu .level {
-      background: linear-gradient(135deg, var(--zhongyu), #047857);
-    }
-
-    #joyson .company-head {
-      background: linear-gradient(135deg, #ffffff 0%, var(--joyson-soft) 100%);
-      border-color: var(--joyson-line);
-    }
-
-    #joyson .company-head::before,
-    #joyson .company-head::after,
-    #joyson .company-meta,
-    #joyson .level {
-      background: linear-gradient(135deg, var(--joyson), #c2410c);
-    }
+    .kepler .dot { background: var(--kepler); }
+    .zhongyu .dot { background: var(--zhongyu); }
+    .joyson .dot { background: var(--joyson); }
 
     .demo-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
-      align-items: stretch;
     }
-
     .demo-card {
-      position: relative;
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: var(--shadow-soft);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-top: 4px solid #9ca3af;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-height: 100%;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
-
-    .demo-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.12);
-    }
-
-    #kepler .demo-card { border-color: rgba(37, 99, 235, 0.18); }
-    #zhongyu .demo-card { border-color: rgba(5, 150, 105, 0.18); }
-    #joyson .demo-card { border-color: rgba(234, 88, 12, 0.20); }
-
-    #kepler .tag { background: var(--kepler-soft); color: #1d4ed8; border: 1px solid var(--kepler-line); }
-    #zhongyu .tag { background: var(--zhongyu-soft); color: #047857; border: 1px solid var(--zhongyu-line); }
-    #joyson .tag { background: var(--joyson-soft); color: #c2410c; border: 1px solid var(--joyson-line); }
-
-    #kepler .result { border-top-color: var(--kepler-line); }
-    #zhongyu .result { border-top-color: var(--zhongyu-line); }
-    #joyson .result { border-top-color: var(--joyson-line); }
-
-    .demo-card.featured {
-      grid-column: span 2;
-    }
+    .kepler .demo-card { border-top-color: var(--kepler); }
+    .zhongyu .demo-card { border-top-color: var(--zhongyu); }
+    .joyson .demo-card { border-top-color: var(--joyson); }
 
     .video-box {
       position: relative;
-      background: #000000;
       width: 100%;
       aspect-ratio: 16 / 9;
+      background: #000;
       overflow: hidden;
     }
-
-    video,
-    iframe {
+    video, iframe {
       width: 100%;
       height: 100%;
       display: block;
       border: none;
-      background: #000000;
+      background: #000;
     }
-
     .video-placeholder {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.72);
+      color: rgba(255, 255, 255, 0.58);
       font-size: 13px;
       pointer-events: none;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 45%);
     }
-
     .card-body {
       padding: 18px 20px 20px;
       display: flex;
@@ -404,257 +225,100 @@
       gap: 10px;
       flex: 1;
     }
-
-    .card-topline {
+    .card-head {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
       align-items: flex-start;
+      gap: 12px;
     }
-
-    .demo-card h3 {
+    .card-head h3 {
       margin: 0;
       font-size: 20px;
-      line-height: 1.28;
+      line-height: 1.3;
     }
-
-    .level {
+    .role {
       flex: none;
-      border-radius: 999px;
       padding: 4px 9px;
-      background: #111111;
-      color: #ffffff;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #374151;
       font-size: 12px;
+      border: 1px solid var(--line);
       white-space: nowrap;
     }
-
     .tags {
       display: flex;
-      gap: 7px;
       flex-wrap: wrap;
+      gap: 7px;
     }
-
     .tag {
       display: inline-flex;
       align-items: center;
       border-radius: 999px;
-      background: #eeeeee;
-      color: #333333;
+      background: #f3f4f6;
+      color: #374151;
       padding: 4px 9px;
       font-size: 12px;
       line-height: 1.2;
     }
-
     .desc {
       margin: 0;
-      color: #333333;
+      color: #374151;
       font-size: 14.5px;
     }
-
     .work-list {
       margin: 0;
       padding-left: 18px;
-      color: #424242;
+      color: #4b5563;
       font-size: 14px;
     }
-
     .work-list li { margin: 3px 0; }
-
     .result {
       margin-top: auto;
-      border-top: 1px solid var(--line);
       padding-top: 10px;
-      color: #252525;
+      border-top: 1px solid var(--line);
+      color: #374151;
       font-size: 14px;
     }
-
-    .result strong { color: #111111; }
+    .result strong { color: #111827; }
 
     .note {
-      margin: 28px 0 0;
+      margin-top: 34px;
+      background: #fff;
+      border-left: 4px solid #374151;
+      border-radius: 12px;
       padding: 16px 18px;
-      background: #ffffff;
-      border-left: 5px solid #111111;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-soft);
-      color: #444444;
+      box-shadow: var(--shadow);
+      color: #4b5563;
       font-size: 14px;
     }
-
     footer {
       text-align: center;
-      color: #666666;
-      padding: 34px 20px 44px;
+      color: #6b7280;
+      padding: 34px 20px 42px;
       font-size: 14px;
     }
 
-    @media (max-width: 980px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .metrics {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 760px) {
-      header { padding: 38px 0 28px; }
-      .page { padding: 0 16px 38px; }
-      .summary, .company-head { padding: 22px 18px; }
-      .company-name { font-size: 26px; }
+    @media (max-width: 900px) {
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .demo-grid { grid-template-columns: 1fr; }
-      .demo-card.featured { grid-column: span 1; }
+    }
+    @media (max-width: 640px) {
+      header { padding: 40px 18px 32px; }
+      main { padding: 0 16px; }
+      .summary { padding: 18px; }
       .metrics { grid-template-columns: 1fr; }
-      .card-topline { flex-direction: column; }
-      .level { width: fit-content; }
+      .card-head { flex-direction: column; }
+      .role { width: fit-content; }
     }
-  
-
-    /* ===== v2: 强化公司分类标签与颜色区分 ===== */
-    body {
-      background:
-        linear-gradient(120deg, rgba(37,99,235,.10), transparent 28%),
-        linear-gradient(240deg, rgba(16,185,129,.10), transparent 30%),
-        linear-gradient(0deg, rgba(249,115,22,.08), transparent 32%),
-        #f4f7fb;
-    }
-
-    header {
-      background:
-        linear-gradient(135deg, #111827 0%, #1e3a8a 42%, #065f46 72%, #7c2d12 100%);
-      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.26);
-    }
-
-    .nav-inner {
-      justify-content: center;
-      padding-top: 13px;
-      padding-bottom: 13px;
-    }
-
-    .nav a {
-      font-weight: 800;
-      border-width: 2px;
-      box-shadow: 0 5px 16px rgba(0,0,0,.06);
-    }
-
-    .nav a[href="#kepler"] { color: #1d4ed8; border-color: #93c5fd; background: #eff6ff; }
-    .nav a[href="#zhongyu"] { color: #047857; border-color: #86efac; background: #ecfdf5; }
-    .nav a[href="#joyson"] { color: #c2410c; border-color: #fdba74; background: #fff7ed; }
-
-    .company-section {
-      margin-top: 54px;
-      padding-top: 8px;
-    }
-
-    .company-head {
-      padding: 38px 34px 34px;
-      border-radius: 34px;
-      text-align: center;
-      border-width: 3px;
-      transform: translateZ(0);
-    }
-
-    .company-head::before {
-      height: 16px;
-    }
-
-    .company-head::after {
-      right: -50px;
-      top: -60px;
-      width: 260px;
-      height: 260px;
-      opacity: 0.18;
-    }
-
-    .company-name {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      width: 100%;
-      text-align: center;
-      font-size: clamp(34px, 5.2vw, 56px);
-      letter-spacing: .04em;
-      margin-top: 6px;
-      margin-bottom: 12px;
-    }
-
-    .company-name::before,
-    .company-name::after {
-      content: "";
-      width: min(90px, 12vw);
-      height: 6px;
-      border-radius: 999px;
-      background: currentColor;
-      opacity: .75;
-    }
-
-    .company-meta {
-      font-size: 18px;
-      padding: 10px 24px;
-      margin: 8px auto 8px;
-      letter-spacing: .04em;
-    }
-
-    .company-desc {
-      font-size: 17px;
-      max-width: 920px;
-      margin-top: 12px;
-      font-weight: 600;
-    }
-
-    #kepler .company-head {
-      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 55%, #bfdbfe 100%);
-      border-color: #2563eb;
-      box-shadow: 0 22px 60px rgba(37, 99, 235, .22);
-    }
-    #kepler .company-name { color: #1d4ed8; }
-
-    #zhongyu .company-head {
-      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 55%, #a7f3d0 100%);
-      border-color: #059669;
-      box-shadow: 0 22px 60px rgba(5, 150, 105, .22);
-    }
-    #zhongyu .company-name { color: #047857; }
-
-    #joyson .company-head {
-      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 55%, #fed7aa 100%);
-      border-color: #ea580c;
-      box-shadow: 0 22px 60px rgba(234, 88, 12, .22);
-    }
-    #joyson .company-name { color: #c2410c; }
-
-    #kepler .demo-card { border-top: 8px solid #2563eb; }
-    #zhongyu .demo-card { border-top: 8px solid #059669; }
-    #joyson .demo-card { border-top: 8px solid #ea580c; }
-
-    #kepler .video-box { background: linear-gradient(135deg, #0f172a, #1d4ed8); }
-    #zhongyu .video-box { background: linear-gradient(135deg, #0f172a, #047857); }
-    #joyson .video-box { background: linear-gradient(135deg, #0f172a, #c2410c); }
-
-    @media (max-width: 760px) {
-      .company-name { font-size: 30px; gap: 8px; }
-      .company-name::before, .company-name::after { width: 34px; height: 4px; }
-      .company-meta { font-size: 15px; }
-      .company-desc { font-size: 15px; }
-    }
-
   </style>
 </head>
 <body>
   <header>
     <div class="hero">
-      <div>
-        <p class="eyebrow">Humanoid Robot RL Motion Control Portfolio</p>
-        <h1>王长峰｜人形机器人强化学习运控 Demo</h1>
-        <p class="subtitle">强化学习运动控制 / Sim-to-Real / 全身动作跟踪 / 动作重定向 / 真实机器人部署</p>
-      </div>
-      <aside class="hero-card">
-        <strong>Demo 展示说明 · 彩色分组版</strong>
-        <p>按实习地点分类展示真实机器人项目与视频 Demo。</p>
-        <p>重点覆盖 K2、行者2号、X02 等人形机器人平台的训练、验证与实物部署工作。</p>
-      </aside>
+      <p class="eyebrow">Humanoid Robot RL Motion Control Portfolio</p>
+      <h1>王长峰｜人形机器人强化学习运控 Demo</h1>
+      <p class="subtitle">强化学习运动控制 / Sim-to-Real / 全身动作跟踪 / 动作重定向 / 真实机器人部署</p>
     </div>
   </header>
 
@@ -667,12 +331,11 @@
     </div>
   </nav>
 
-  <main class="page">
+  <main>
     <section class="summary">
-      <h2 class="summary-title">个人简介</h2>
+      <h2>个人简介</h2>
       <p>具备人形机器人强化学习运动控制算法研发与实物部署经验，熟悉从动作重定向、仿真训练、Sim-to-Sim 验证到真实机器人部署的完整技术链路。</p>
-      <p>项目覆盖 K2 拟人大步长步态、太极舞蹈动作、行者2号长距离行走与小跑、X02 打拳动作模仿，以及小跑、无视野上楼梯、扭胯式行走、全身遥操作链路复现等多类任务。</p>
-
+      <p>项目覆盖 K2 拟人大步长步态、太极舞蹈动作、行者2号长距离行走与小跑、X02 打拳动作模仿，以及小跑、无视野上楼梯、扭胯式行走、全身遥操作链路复现等任务。</p>
       <div class="metrics">
         <div class="metric"><strong>0.8 m/s</strong><span>K2 拟人大步长步态稳定行走速度</span></div>
         <div class="metric"><strong>1.5 脚掌</strong><span>K2 拟人大步长步态步长</span></div>
@@ -681,17 +344,15 @@
       </div>
     </section>
 
-    <section id="kepler" class="company-section">
-      <div class="company-head">
-        <div>
-          <h2 class="company-name">上海开普勒机器人有限公司</h2>
-          <p class="company-meta">运控算法实习生｜2025.06 - 至今</p>
-        </div>
-        <p class="company-desc">主要负责 K2 人形机器人拟人大步长步态与太极舞蹈动作实现；参与小跑、无视野上楼梯、扭胯式行走等运动能力开发，并参与 TWIST 全身遥操作框架的初步实物验证。</p>
+    <section id="kepler" class="company-section kepler">
+      <div class="company-title">
+        <div class="company-badge"><span class="dot"></span>运控算法实习生｜2025.06 - 至今</div>
+        <h2>上海开普勒机器人有限公司</h2>
+        <p>主要负责 K2 拟人大步长步态与太极舞蹈动作实现；参与小跑、无视野上楼梯、扭胯式行走等运动能力开发，并参与 TWIST 全身遥操作框架的初步实物验证。</p>
       </div>
 
       <div class="demo-grid">
-        <article class="demo-card featured">
+        <article class="demo-card">
           <div class="video-box">
             <video controls preload="metadata" poster="images/k2_humanoid_stride.jpg">
               <source src="videos/k2_humanoid_stride.mp4" type="video/mp4" />
@@ -700,23 +361,18 @@
             <div class="video-placeholder">K2 Humanoid Long-stride Gait Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-topline">
-              <h3>K2 拟人大步长步态实物部署</h3>
-              <span class="level">主要负责</span>
-            </div>
-            <div class="tags">
-              <span class="tag">强化学习步态控制</span><span class="tag">Sim-to-Real</span><span class="tag">实物交付</span><span class="tag">产品压测</span>
-            </div>
+            <div class="card-head"><h3>K2 拟人大步长步态实物部署</h3><span class="role">主要负责</span></div>
+            <div class="tags"><span class="tag">强化学习步态控制</span><span class="tag">Sim-to-Real</span><span class="tag">产品交付</span></div>
             <p class="desc">面向 K2 人形机器人产品化行走能力，完成拟人大步长步态的训练、Sim-to-Sim 验证、真实机器人部署和出厂包测试。</p>
             <ul class="work-list">
-              <li>负责策略训练、仿真验证、实物部署和现场调试，构建真实机器人观测输入、动作输出与安全保护流程。</li>
-              <li>针对动作幅值偏差、落脚冲击、基座晃动和关节跟踪误差，调整动作缩放、PD 控制参数、关节限幅和策略输出滤波。</li>
+              <li>负责策略训练、仿真验证、实物部署和现场调试。</li>
+              <li>调整动作缩放、PD 参数、关节限幅、策略输出滤波及默认关节角补偿。</li>
             </ul>
-            <div class="result"><strong>成果：</strong>实现 0.8 m/s 拟人大步长步态稳定行走，步长约 1.5 个脚掌；出厂包压测 8 小时无异常，并完成交付验证。</div>
+            <div class="result"><strong>成果：</strong>实现 0.8 m/s 稳定行走，步长约 1.5 个脚掌；出厂包压测 8 小时无异常。</div>
           </div>
         </article>
 
-        <article class="demo-card featured">
+        <article class="demo-card">
           <div class="video-box">
             <video controls preload="metadata" poster="images/k2_taichi_dance.jpg">
               <source src="videos/k2_taichi_dance.mp4" type="video/mp4" />
@@ -725,16 +381,11 @@
             <div class="video-placeholder">K2 Taichi Dance Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-topline">
-              <h3>K2 太极舞蹈动作与全身跟踪控制</h3>
-              <span class="level">主要负责</span>
-            </div>
-            <div class="tags">
-              <span class="tag">PHC / GMR 重定向</span><span class="tag">ASAP</span><span class="tag">Sim-to-Sim</span><span class="tag">全身动作跟踪</span>
-            </div>
-            <p class="desc">基于 PHC / GMR 重定向框架完成人体动作到机器人关节空间映射，并基于 ASAP 框架完成训练、Sim-to-Sim 验证与真实机器人部署。</p>
+            <div class="card-head"><h3>K2 太极舞蹈动作与全身跟踪控制</h3><span class="role">主要负责</span></div>
+            <div class="tags"><span class="tag">PHC / GMR 重定向</span><span class="tag">ASAP</span><span class="tag">全身动作跟踪</span></div>
+            <p class="desc">通过 PHC / GMR 完成人体动作到机器人关节空间映射，基于 ASAP 完成训练、Sim-to-Sim 验证与真实机器人部署。</p>
             <ul class="work-list">
-              <li>训练阶段重点修改 reward，优化关节跟踪、关键点位置跟踪、基座姿态稳定及足端接触相关奖励项。</li>
+              <li>训练阶段重点修改 reward，优化关节跟踪、关键点位置跟踪、基座姿态稳定及足端接触奖励。</li>
               <li>实物部署阶段对默认关节角进行补偿，改善动作幅值一致性和姿态稳定性。</li>
             </ul>
             <div class="result"><strong>成果：</strong>太极动作已完成真实机器人功能测试，并集成至产品功能中。</div>
@@ -750,12 +401,9 @@
             <div class="video-placeholder">K2 Trot Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-topline">
-              <h3>K2 小跑功能</h3>
-              <span class="level">参与</span>
-            </div>
+            <div class="card-head"><h3>K2 小跑功能</h3><span class="role">参与</span></div>
             <div class="tags"><span class="tag">humanoid-gym</span><span class="tag">小跑</span><span class="tag">运动能力扩展</span></div>
-            <p class="desc">基于 humanoid-gym 改进并参与小跑运动能力开发，验证机器人在更高动态步态下的稳定性与控制效果。</p>
+            <p class="desc">基于 humanoid-gym 改进并参与小跑运动能力开发，验证机器人在较高动态步态下的稳定性与控制效果。</p>
             <div class="result"><strong>展示内容：</strong>小跑步态仿真与实物验证片段。</div>
           </div>
         </article>
@@ -769,13 +417,10 @@
             <div class="video-placeholder">K2 Blind Stair Climbing Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-topline">
-              <h3>K2 无视野上楼梯</h3>
-              <span class="level">参与</span>
-            </div>
-            <div class="tags"><span class="tag">无视野上楼梯</span><span class="tag">足端接触</span><span class="tag">鲁棒控制</span></div>
-            <p class="desc">参与无视野上楼梯功能开发，关注足端接触稳定性、抬脚高度、基座姿态保持与台阶场景下的策略鲁棒性。</p>
-            <div class="result"><strong>展示内容：</strong>无外部视觉输入条件下的楼梯运动能力验证。</div>
+            <div class="card-head"><h3>K2 无视野上楼梯</h3><span class="role">参与</span></div>
+            <div class="tags"><span class="tag">无视野上楼梯</span><span class="tag">复杂地形</span><span class="tag">实物验证</span></div>
+            <p class="desc">参与无视野上楼梯运动能力开发，关注机器人在非平地接触条件下的足端落点、姿态稳定和连续运动能力。</p>
+            <div class="result"><strong>展示内容：</strong>无视觉输入条件下的楼梯运动验证片段。</div>
           </div>
         </article>
 
@@ -785,16 +430,13 @@
               <source src="videos/k2_hip_sway_walk.mp4" type="video/mp4" />
               当前浏览器不支持 video 标签。
             </video>
-            <div class="video-placeholder">K2 Hip-sway Walking Demo</div>
+            <div class="video-placeholder">K2 Hip-sway Walk Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-topline">
-              <h3>K2 扭胯式行走</h3>
-              <span class="level">参与</span>
-            </div>
-            <div class="tags"><span class="tag">拟人运动</span><span class="tag">躯干协调</span><span class="tag">步态风格化</span></div>
-            <p class="desc">参与扭胯式行走能力开发，探索更具拟人感的躯干与下肢协同运动表现。</p>
-            <div class="result"><strong>展示内容：</strong>扭胯式行走效果与步态风格化验证。</div>
+            <div class="card-head"><h3>K2 扭胯式行走</h3><span class="role">参与</span></div>
+            <div class="tags"><span class="tag">拟人运动</span><span class="tag">步态风格</span><span class="tag">运动展示</span></div>
+            <p class="desc">参与扭胯式行走功能开发，探索更接近人体运动风格的躯干与髋部协同控制方式。</p>
+            <div class="result"><strong>展示内容：</strong>扭胯式行走动作效果验证片段。</div>
           </div>
         </article>
 
@@ -807,29 +449,24 @@
             <div class="video-placeholder">TWIST Upper-body Reproduction Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-topline">
-              <h3>TWIST 全身遥操作框架复现</h3>
-              <span class="level">参与</span>
-            </div>
+            <div class="card-head"><h3>TWIST 全身遥操作框架复现</h3><span class="role">参与</span></div>
             <div class="tags"><span class="tag">TWIST</span><span class="tag">遥操作链路</span><span class="tag">上肢动作复现</span></div>
-            <p class="desc">参与 TWIST 全身遥操作框架复现与链路打通；目前仿真端可完成动作复现，实物端可实现机器人原地站立状态下的上肢动作复现。</p>
-            <div class="result"><strong>说明：</strong>当前尚未接入 VR 遥操，主要展示链路复现与实物上肢动作验证。</div>
+            <p class="desc">参与 TWIST 全身遥操作框架复现与链路打通；目前仿真端可完成动作复现，实物端实现原地站立状态下的上肢动作复现。</p>
+            <div class="result"><strong>说明：</strong>尚未接入 VR 遥操，当前主要验证动作复现与实物链路。</div>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="zhongyu" class="company-section">
-      <div class="company-head">
-        <div>
-          <h2 class="company-name">河南中豫具身智能实验室</h2>
-          <p class="company-meta">算法实习生｜2025.02 - 2025.05</p>
-        </div>
-        <p class="company-desc">主要参与行者2号人形机器人长距离行走与小跑运动能力的策略训练配合、实物部署调试和比赛场景验证。</p>
+    <section id="zhongyu" class="company-section zhongyu">
+      <div class="company-title">
+        <div class="company-badge"><span class="dot"></span>算法实习生｜2025.02 - 2025.05</div>
+        <h2>河南中豫具身智能实验室</h2>
+        <p>主要参与行者2号人形机器人长距离行走与小跑策略训练配合、实物部署调试及比赛场景验证。</p>
       </div>
 
       <div class="demo-grid">
-        <article class="demo-card featured">
+        <article class="demo-card">
           <div class="video-box">
             <video controls preload="metadata" poster="images/walker2_marathon.jpg">
               <source src="videos/walker2_marathon.mp4" type="video/mp4" />
@@ -838,52 +475,28 @@
             <div class="video-placeholder">Walker 2 Marathon Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-topline">
-              <h3>行者2号长距离行走与小跑实物部署</h3>
-              <span class="level">参与</span>
-            </div>
-            <div class="tags"><span class="tag">长距离行走</span><span class="tag">小跑</span><span class="tag">PD 调参</span><span class="tag">关节角度补偿</span><span class="tag">马拉松比赛</span></div>
+            <div class="card-head"><h3>行者2号长距离行走与小跑</h3><span class="role">参与</span></div>
+            <div class="tags"><span class="tag">长距离行走</span><span class="tag">小跑</span><span class="tag">实物调参</span></div>
             <p class="desc">面向人形机器人半程马拉松比赛场景，参与行者2号长距离行走与小跑策略训练及实物部署调试。</p>
             <ul class="work-list">
-              <li>配合完成策略训练与实物部署，参与仿真训练效果评估、策略筛选和比赛前稳定性验证。</li>
-              <li>重点负责 PD 参数调节、关节角度补偿和动作幅值修正，提升实物长时间运行稳定性。</li>
+              <li>配合完成策略训练、策略筛选与实物验证。</li>
+              <li>负责实物端 PD 参数调节、关节角度补偿和动作幅值修正。</li>
             </ul>
-            <div class="result"><strong>成果：</strong>支撑团队在 2025 年北京亦庄全球首场人形机器人半程马拉松比赛中获得第三名。</div>
-          </div>
-        </article>
-
-        <article class="demo-card">
-          <div class="video-box">
-            <video controls preload="metadata" poster="images/host_homie.jpg">
-              <source src="videos/host_homie.mp4" type="video/mp4" />
-              当前浏览器不支持 video 标签。
-            </video>
-            <div class="video-placeholder">HOST / HOMIE Framework Notes</div>
-          </div>
-          <div class="card-body">
-            <div class="card-topline">
-              <h3>HOST / HOMIE 前沿框架复现</h3>
-              <span class="level">跟进复现</span>
-            </div>
-            <div class="tags"><span class="tag">HOST</span><span class="tag">HOMIE</span><span class="tag">倒地爬起</span><span class="tag">任务型控制</span></div>
-            <p class="desc">跟进并复现 HOST 倒地爬起算法框架与 HOMIE 任务型人形机器人算法框架，理解非标准姿态恢复与任务驱动型全身控制流程。</p>
-            <div class="result"><strong>展示内容：</strong>可用于放置框架复现、仿真结果或学习记录类视频。</div>
+            <div class="result"><strong>成果：</strong>项目成果应用于 2025 年北京亦庄全球首场人形机器人半程马拉松比赛，团队获得第三名。</div>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="joyson" class="company-section">
-      <div class="company-head">
-        <div>
-          <h2 class="company-name">上海卓益得机器人有限公司</h2>
-          <p class="company-meta">算法实习生｜2023.10 - 2025.01</p>
-        </div>
-        <p class="company-desc">主要参与 X02 人形机器人全身动作模仿强化学习项目，完成动作重定向、Isaac Gym 仿真训练、MuJoCo Sim-to-Sim 验证与真实机器人上机测试。</p>
+    <section id="joyson" class="company-section joyson">
+      <div class="company-title">
+        <div class="company-badge"><span class="dot"></span>算法实习生｜2023.10 - 2025.01</div>
+        <h2>上海卓益得机器人有限公司</h2>
+        <p>主要参与 X02 人形机器人全身动作模仿强化学习项目，并跟进复现 AMP、H2O、ExBody、HumanPlus、DeepMimic 等前沿算法框架。</p>
       </div>
 
       <div class="demo-grid">
-        <article class="demo-card featured">
+        <article class="demo-card">
           <div class="video-box">
             <video controls preload="metadata" poster="images/x02_punch.jpg">
               <source src="videos/x02_punch.mp4" type="video/mp4" />
@@ -892,46 +505,25 @@
             <div class="video-placeholder">X02 Punch Imitation Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-topline">
-              <h3>X02 全身动作模仿强化学习项目</h3>
-              <span class="level">参与</span>
-            </div>
-            <div class="tags"><span class="tag">PHC</span><span class="tag">Isaac Gym</span><span class="tag">MuJoCo</span><span class="tag">知识蒸馏</span><span class="tag">GRPC</span><span class="tag">打拳动作</span></div>
-            <p class="desc">面向 X02 人形机器人打拳动作模仿任务，完成从动作重定向、仿真训练、Sim-to-Sim 验证到真实机器人上机测试的完整闭环。</p>
+            <div class="card-head"><h3>X02 打拳动作模仿强化学习</h3><span class="role">参与</span></div>
+            <div class="tags"><span class="tag">PHC 重定向</span><span class="tag">Isaac Gym</span><span class="tag">MuJoCo Sim-to-Sim</span><span class="tag">GRPC 部署</span></div>
+            <p class="desc">完成 X02 机器人打拳动作从重定向、仿真训练、Sim-to-Sim 验证到真实机器人上机测试的完整闭环。</p>
             <ul class="work-list">
-              <li>基于 PHC 完成动作重定向，在 Isaac Gym 中搭建全身动作模仿训练流程，并使用 MuJoCo 进行 Sim-to-Sim 验证。</li>
-              <li>基于 GRPC 通信完成真实机器人部署链路打通，分析仿真与真实机器人在动作幅值、身体稳定性和关节跟踪方面的差异。</li>
+              <li>基于 PHC 完成人体动作到 X02 机器人关节空间的重定向。</li>
+              <li>在 Isaac Gym 中完成训练，并使用 MuJoCo 进行 Sim-to-Sim 验证。</li>
+              <li>通过 GRPC 通信完成真实机器人部署链路调试。</li>
             </ul>
-            <div class="result"><strong>成果：</strong>完成 X02 机器人打拳动作真实上机测试，积累高动态全身动作模仿策略实物迁移经验。</div>
-          </div>
-        </article>
-
-        <article class="demo-card">
-          <div class="video-box">
-            <video controls preload="metadata" poster="images/frontier_frameworks.jpg">
-              <source src="videos/frontier_frameworks.mp4" type="video/mp4" />
-              当前浏览器不支持 video 标签。
-            </video>
-            <div class="video-placeholder">Frontier Frameworks Review</div>
-          </div>
-          <div class="card-body">
-            <div class="card-topline">
-              <h3>前沿算法框架复现</h3>
-              <span class="level">跟进复现</span>
-            </div>
-            <div class="tags"><span class="tag">AMP</span><span class="tag">DeepMimic</span><span class="tag">H2O</span><span class="tag">ExBody</span><span class="tag">HumanPlus</span></div>
-            <p class="desc">复现并熟悉 AMP、H2O、ExBody、HumanPlus、DeepMimic 等前沿人形机器人运动控制算法框架。</p>
-            <div class="result"><strong>展示内容：</strong>可用于放置仿真复现效果、框架阅读记录或算法对比展示。</div>
+            <div class="result"><strong>成果：</strong>完成打拳动作真实上机测试，积累高动态全身动作实物迁移经验。</div>
           </div>
         </article>
       </div>
     </section>
 
     <section id="note" class="note">
-      <strong>视频文件说明：</strong>请将视频放入仓库的 <code>videos/</code> 目录，将封面图放入 <code>images/</code> 目录，并保持文件名与页面中的路径一致。例如 <code>videos/k2_humanoid_stride.mp4</code>、<code>videos/k2_taichi_dance.mp4</code>。如果暂时没有某个视频，可以删除对应卡片或保留占位。
+      <strong>视频文件说明：</strong>请将视频文件放入仓库的 <code>videos/</code> 文件夹，并保持页面中的文件名一致。建议视频压缩为 MP4，单个视频尽量控制在 20-50 MB 以内，以提升 GitHub Pages 加载速度。
     </section>
   </main>
 
-  <footer>© 2026 王长峰｜Humanoid Robot Reinforcement Learning Motion Control Portfolio</footer>
+  <footer>© 2026 王长峰｜Humanoid Robot RL Motion Control Demo</footer>
 </body>
 </html>
