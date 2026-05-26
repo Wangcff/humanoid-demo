@@ -15,15 +15,6 @@
       --line: #dedede;
       --dark: #111111;
       --dark-2: #242424;
-      --kepler: #2563eb;
-      --kepler-soft: #eff6ff;
-      --kepler-line: #bfdbfe;
-      --zhongyu: #059669;
-      --zhongyu-soft: #ecfdf5;
-      --zhongyu-line: #a7f3d0;
-      --joyson: #ea580c;
-      --joyson-soft: #fff7ed;
-      --joyson-line: #fed7aa;
       --radius-lg: 22px;
       --radius-md: 16px;
       --shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
@@ -38,9 +29,7 @@
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30%),
-        radial-gradient(circle at 90% 12%, rgba(5, 150, 105, 0.10), transparent 24%),
-        radial-gradient(circle at 20% 92%, rgba(234, 88, 12, 0.10), transparent 28%),
+        radial-gradient(circle at top left, rgba(0, 0, 0, 0.08), transparent 28%),
         linear-gradient(180deg, #ffffff 0%, var(--bg) 42%, #eeeeee 100%);
       color: var(--text);
       line-height: 1.65;
@@ -55,10 +44,7 @@
     }
 
     header {
-      background:
-        radial-gradient(circle at 14% 22%, rgba(37, 99, 235, 0.40), transparent 30%),
-        radial-gradient(circle at 74% 10%, rgba(5, 150, 105, 0.26), transparent 28%),
-        linear-gradient(135deg, #0f172a 0%, #1f2937 54%, #111111 100%);
+      background: linear-gradient(135deg, #101010 0%, #262626 58%, #111111 100%);
       color: #ffffff;
       padding: 56px 0 34px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -146,10 +132,9 @@
     }
 
     .nav a:hover {
-      background: linear-gradient(135deg, #111111, #334155);
+      background: #111111;
       color: #ffffff;
       border-color: #111111;
-      transform: translateY(-1px);
     }
 
     .summary {
@@ -177,7 +162,7 @@
       width: 5px;
       height: 24px;
       border-radius: 999px;
-      background: linear-gradient(180deg, #2563eb, #059669);
+      background: #111111;
       display: inline-block;
     }
 
@@ -220,111 +205,34 @@
     }
 
     .company-head {
-      position: relative;
-      overflow: hidden;
       background: #ffffff;
       border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 28px 32px;
-      margin-bottom: 22px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 22px 24px;
+      margin-bottom: 18px;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+      grid-template-columns: 1.25fr 2fr;
+      gap: 20px;
       align-items: center;
-      text-align: center;
-    }
-
-    .company-head::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 8px;
-      background: #111111;
-    }
-
-    .company-head::after {
-      content: "";
-      position: absolute;
-      right: -70px;
-      top: -90px;
-      width: 210px;
-      height: 210px;
-      border-radius: 999px;
-      opacity: 0.14;
-      background: #111111;
-      pointer-events: none;
     }
 
     .company-name {
-      position: relative;
       margin: 0;
-      font-size: clamp(28px, 3.4vw, 42px);
-      line-height: 1.18;
-      letter-spacing: 0.02em;
-      font-weight: 800;
+      font-size: 24px;
+      line-height: 1.25;
     }
 
     .company-meta {
-      position: relative;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      width: fit-content;
-      margin: 12px auto 0;
-      color: #ffffff;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      padding: 7px 16px;
-      border-radius: 999px;
-      background: #111111;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .company-desc {
-      position: relative;
-      max-width: 880px;
-      margin: 0 auto;
+      margin: 0;
       color: #333333;
-      font-size: 16px;
-      line-height: 1.75;
-    }
-
-    #kepler .company-head {
-      background: linear-gradient(135deg, #ffffff 0%, var(--kepler-soft) 100%);
-      border-color: var(--kepler-line);
-    }
-
-    #kepler .company-head::before,
-    #kepler .company-head::after,
-    #kepler .company-meta,
-    #kepler .level {
-      background: linear-gradient(135deg, var(--kepler), #1d4ed8);
-    }
-
-    #zhongyu .company-head {
-      background: linear-gradient(135deg, #ffffff 0%, var(--zhongyu-soft) 100%);
-      border-color: var(--zhongyu-line);
-    }
-
-    #zhongyu .company-head::before,
-    #zhongyu .company-head::after,
-    #zhongyu .company-meta,
-    #zhongyu .level {
-      background: linear-gradient(135deg, var(--zhongyu), #047857);
-    }
-
-    #joyson .company-head {
-      background: linear-gradient(135deg, #ffffff 0%, var(--joyson-soft) 100%);
-      border-color: var(--joyson-line);
-    }
-
-    #joyson .company-head::before,
-    #joyson .company-head::after,
-    #joyson .company-meta,
-    #joyson .level {
-      background: linear-gradient(135deg, var(--joyson), #c2410c);
+      font-size: 15px;
     }
 
     .demo-grid {
@@ -344,25 +252,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100%;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
-
-    .demo-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.12);
-    }
-
-    #kepler .demo-card { border-color: rgba(37, 99, 235, 0.18); }
-    #zhongyu .demo-card { border-color: rgba(5, 150, 105, 0.18); }
-    #joyson .demo-card { border-color: rgba(234, 88, 12, 0.20); }
-
-    #kepler .tag { background: var(--kepler-soft); color: #1d4ed8; border: 1px solid var(--kepler-line); }
-    #zhongyu .tag { background: var(--zhongyu-soft); color: #047857; border: 1px solid var(--zhongyu-line); }
-    #joyson .tag { background: var(--joyson-soft); color: #c2410c; border: 1px solid var(--joyson-line); }
-
-    #kepler .result { border-top-color: var(--kepler-line); }
-    #zhongyu .result { border-top-color: var(--zhongyu-line); }
-    #joyson .result { border-top-color: var(--joyson-line); }
 
     .demo-card.featured {
       grid-column: span 2;
@@ -489,7 +379,8 @@
     }
 
     @media (max-width: 980px) {
-      .hero {
+      .hero,
+      .company-head {
         grid-template-columns: 1fr;
       }
 
@@ -501,145 +392,13 @@
     @media (max-width: 760px) {
       header { padding: 38px 0 28px; }
       .page { padding: 0 16px 38px; }
-      .summary, .company-head { padding: 22px 18px; }
-      .company-name { font-size: 26px; }
+      .summary, .company-head { padding: 18px; }
       .demo-grid { grid-template-columns: 1fr; }
       .demo-card.featured { grid-column: span 1; }
       .metrics { grid-template-columns: 1fr; }
       .card-topline { flex-direction: column; }
       .level { width: fit-content; }
     }
-  
-
-    /* ===== v2: 强化公司分类标签与颜色区分 ===== */
-    body {
-      background:
-        linear-gradient(120deg, rgba(37,99,235,.10), transparent 28%),
-        linear-gradient(240deg, rgba(16,185,129,.10), transparent 30%),
-        linear-gradient(0deg, rgba(249,115,22,.08), transparent 32%),
-        #f4f7fb;
-    }
-
-    header {
-      background:
-        linear-gradient(135deg, #111827 0%, #1e3a8a 42%, #065f46 72%, #7c2d12 100%);
-      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.26);
-    }
-
-    .nav-inner {
-      justify-content: center;
-      padding-top: 13px;
-      padding-bottom: 13px;
-    }
-
-    .nav a {
-      font-weight: 800;
-      border-width: 2px;
-      box-shadow: 0 5px 16px rgba(0,0,0,.06);
-    }
-
-    .nav a[href="#kepler"] { color: #1d4ed8; border-color: #93c5fd; background: #eff6ff; }
-    .nav a[href="#zhongyu"] { color: #047857; border-color: #86efac; background: #ecfdf5; }
-    .nav a[href="#joyson"] { color: #c2410c; border-color: #fdba74; background: #fff7ed; }
-
-    .company-section {
-      margin-top: 54px;
-      padding-top: 8px;
-    }
-
-    .company-head {
-      padding: 38px 34px 34px;
-      border-radius: 34px;
-      text-align: center;
-      border-width: 3px;
-      transform: translateZ(0);
-    }
-
-    .company-head::before {
-      height: 16px;
-    }
-
-    .company-head::after {
-      right: -50px;
-      top: -60px;
-      width: 260px;
-      height: 260px;
-      opacity: 0.18;
-    }
-
-    .company-name {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      width: 100%;
-      text-align: center;
-      font-size: clamp(34px, 5.2vw, 56px);
-      letter-spacing: .04em;
-      margin-top: 6px;
-      margin-bottom: 12px;
-    }
-
-    .company-name::before,
-    .company-name::after {
-      content: "";
-      width: min(90px, 12vw);
-      height: 6px;
-      border-radius: 999px;
-      background: currentColor;
-      opacity: .75;
-    }
-
-    .company-meta {
-      font-size: 18px;
-      padding: 10px 24px;
-      margin: 8px auto 8px;
-      letter-spacing: .04em;
-    }
-
-    .company-desc {
-      font-size: 17px;
-      max-width: 920px;
-      margin-top: 12px;
-      font-weight: 600;
-    }
-
-    #kepler .company-head {
-      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 55%, #bfdbfe 100%);
-      border-color: #2563eb;
-      box-shadow: 0 22px 60px rgba(37, 99, 235, .22);
-    }
-    #kepler .company-name { color: #1d4ed8; }
-
-    #zhongyu .company-head {
-      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 55%, #a7f3d0 100%);
-      border-color: #059669;
-      box-shadow: 0 22px 60px rgba(5, 150, 105, .22);
-    }
-    #zhongyu .company-name { color: #047857; }
-
-    #joyson .company-head {
-      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 55%, #fed7aa 100%);
-      border-color: #ea580c;
-      box-shadow: 0 22px 60px rgba(234, 88, 12, .22);
-    }
-    #joyson .company-name { color: #c2410c; }
-
-    #kepler .demo-card { border-top: 8px solid #2563eb; }
-    #zhongyu .demo-card { border-top: 8px solid #059669; }
-    #joyson .demo-card { border-top: 8px solid #ea580c; }
-
-    #kepler .video-box { background: linear-gradient(135deg, #0f172a, #1d4ed8); }
-    #zhongyu .video-box { background: linear-gradient(135deg, #0f172a, #047857); }
-    #joyson .video-box { background: linear-gradient(135deg, #0f172a, #c2410c); }
-
-    @media (max-width: 760px) {
-      .company-name { font-size: 30px; gap: 8px; }
-      .company-name::before, .company-name::after { width: 34px; height: 4px; }
-      .company-meta { font-size: 15px; }
-      .company-desc { font-size: 15px; }
-    }
-
   </style>
 </head>
 <body>
@@ -651,7 +410,7 @@
         <p class="subtitle">强化学习运动控制 / Sim-to-Real / 全身动作跟踪 / 动作重定向 / 真实机器人部署</p>
       </div>
       <aside class="hero-card">
-        <strong>Demo 展示说明 · 彩色分组版</strong>
+        <strong>Demo 展示说明</strong>
         <p>按实习地点分类展示真实机器人项目与视频 Demo。</p>
         <p>重点覆盖 K2、行者2号、X02 等人形机器人平台的训练、验证与实物部署工作。</p>
       </aside>
