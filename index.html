@@ -26,37 +26,122 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
       color: var(--text);
       background: var(--bg);
-      line-height: 1.65;
+      font-size: 16px;
+      line-height: 1.72;
+    }
+    body.is-locked {
+      overflow: hidden;
+    }
+    body.is-locked > header,
+    body.is-locked > nav,
+    body.is-locked > main,
+    body.is-locked > footer {
+      filter: blur(10px);
+      pointer-events: none;
+      user-select: none;
     }
     a { color: inherit; text-decoration: none; }
+
+    .password-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(12px);
+    }
+    body.is-locked .password-gate {
+      display: flex;
+    }
+    .password-panel {
+      width: min(420px, 100%);
+      border: 1px solid rgba(203, 213, 225, 0.72);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 24px 72px rgba(15, 23, 42, 0.35);
+      padding: 28px;
+    }
+    .password-panel h2 {
+      margin: 0 0 8px;
+      color: #0f172a;
+      font-size: 26px;
+      line-height: 1.25;
+    }
+    .password-panel p {
+      margin: 0 0 18px;
+      color: #64748b;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .password-form {
+      display: grid;
+      gap: 12px;
+    }
+    .password-form label {
+      color: #334155;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .password-form input {
+      width: 100%;
+      height: 46px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0 13px;
+      color: #0f172a;
+      font: inherit;
+      outline: none;
+    }
+    .password-form input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    }
+    .password-form button {
+      height: 46px;
+      border: 0;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #fff;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .password-error {
+      min-height: 20px;
+      color: #b91c1c;
+      font-size: 14px;
+    }
 
     header {
       background: var(--dark);
       color: #fff;
-      padding: 52px 20px 42px;
+      padding: 66px 24px 54px;
       border-bottom: 4px solid #374151;
     }
     .hero {
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
     }
     .eyebrow {
       margin: 0 0 10px;
       color: #cbd5e1;
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
     h1 {
       margin: 0;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.18;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.12;
     }
     .subtitle {
-      margin: 16px 0 0;
-      max-width: 780px;
+      margin: 20px 0 0;
+      max-width: 860px;
       color: #d1d5db;
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .nav {
@@ -68,28 +153,30 @@
       backdrop-filter: blur(10px);
     }
     .nav-inner {
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 10px 20px;
+      padding: 12px 24px;
       display: flex;
       gap: 10px;
+      justify-content: center;
       overflow-x: auto;
     }
     .nav a {
       flex: none;
-      padding: 7px 12px;
+      padding: 9px 16px;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: #fff;
       color: #374151;
-      font-size: 13px;
+      font-size: 16px;
+      font-weight: 700;
     }
     .nav a:hover { border-color: #9ca3af; }
 
     main {
-      max-width: 1120px;
-      margin: 28px auto 48px;
-      padding: 0 20px;
+      max-width: 1180px;
+      margin: 36px auto 58px;
+      padding: 0 24px;
     }
 
     .summary {
@@ -97,49 +184,122 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 24px;
-      margin-bottom: 34px;
+      padding: 32px;
+      margin-bottom: 44px;
     }
     .summary h2 {
-      margin: 0 0 12px;
-      font-size: 23px;
+      margin: 0 0 14px;
+      font-size: 29px;
+      line-height: 1.25;
     }
     .summary p {
-      margin: 8px 0;
+      margin: 10px 0;
       color: #374151;
+      font-size: 16.5px;
+    }
+    .summary-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .summary-point {
+      border: 1px solid #bfdbfe;
+      border-radius: 14px;
+      background: #f8fbff;
+      padding: 16px 18px;
+    }
+    .summary-point strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #1d4ed8;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    .summary-point span {
+      display: block;
+      color: #475569;
       font-size: 15px;
+      line-height: 1.6;
     }
     .metrics {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
     }
     .metric {
       border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 14px;
+      border-radius: 14px;
+      padding: 18px;
       background: #fafafa;
+    }
+    .metric-feature {
+      background: #f8fbff;
+      border-color: #bfdbfe;
     }
     .metric strong {
       display: block;
-      font-size: 21px;
-      margin-bottom: 4px;
+      font-size: 24px;
+      line-height: 1.25;
+      margin-bottom: 6px;
       color: #111827;
     }
     .metric span {
       display: block;
       color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .metric-feature strong {
+      color: #1e3a8a;
+    }
+    .metric-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #dbeafe;
+    }
+    .metric-stat b {
+      display: block;
+      color: #1d4ed8;
+      font-size: 22px;
+      line-height: 1.15;
+      margin-bottom: 3px;
+    }
+    .metric-stat small {
+      display: block;
+      color: #475569;
       font-size: 13px;
+      line-height: 1.35;
     }
 
     .company-section {
-      margin-top: 40px;
+      margin-top: 52px;
       scroll-margin-top: 72px;
+    }
+    .company-section + .company-section {
+      margin-top: 54px;
+      padding-top: 46px;
+      border-top: 1px solid #d5dae2;
+      position: relative;
+    }
+    .company-section + .company-section::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      width: min(180px, 42vw);
+      height: 3px;
+      border-radius: 999px;
+      background: #94a3b8;
+      transform: translateX(-50%);
     }
     .company-title {
       text-align: center;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
     }
     .company-badge {
       display: inline-flex;
@@ -150,7 +310,7 @@
       border-radius: 999px;
       background: #fff;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
     }
     .dot {
       width: 9px;
@@ -159,16 +319,16 @@
       background: #9ca3af;
     }
     .company-title h2 {
-      margin: 14px 0 8px;
-      font-size: clamp(25px, 3.2vw, 34px);
+      margin: 16px 0 10px;
+      font-size: clamp(30px, 3.8vw, 42px);
       line-height: 1.25;
       letter-spacing: 0.02em;
     }
     .company-title p {
       margin: 0 auto;
-      max-width: 780px;
+      max-width: 860px;
       color: var(--muted);
-      font-size: 15px;
+      font-size: 16.5px;
     }
 
     .kepler .dot { background: var(--kepler); }
@@ -178,7 +338,7 @@
     .demo-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+      gap: 24px;
     }
     .demo-card {
       background: var(--card);
@@ -190,6 +350,11 @@
       display: flex;
       flex-direction: column;
     }
+    .demo-card-wide {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+    }
     .kepler .demo-card { border-top-color: var(--kepler); }
     .zhongyu .demo-card { border-top-color: var(--zhongyu); }
     .joyson .demo-card { border-top-color: var(--joyson); }
@@ -197,9 +362,25 @@
     .video-box {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 9 / 8;
       background: #000;
       overflow: hidden;
+    }
+    .video-list {
+      display: grid;
+      gap: 1px;
+      background: #111827;
+    }
+    .video-list-vertical {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+    }
+    .video-list-pair {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+    }
+    .video-box-vertical {
+      aspect-ratio: 9 / 16;
     }
     video, iframe {
       width: 100%;
@@ -207,6 +388,33 @@
       display: block;
       border: none;
       background: #000;
+      object-fit: contain;
+    }
+    iframe {
+      aspect-ratio: 16 / 9;
+    }
+    .video-box-vertical video {
+      height: 100%;
+    }
+    .achievement-image {
+      width: 100%;
+      aspect-ratio: 9 / 8;
+      display: block;
+      object-fit: contain;
+      background: #f8fafc;
+    }
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: #111827;
+    }
+    .image-gallery img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      object-fit: contain;
+      background: #f8fafc;
     }
     .video-placeholder {
       position: absolute;
@@ -219,7 +427,7 @@
       pointer-events: none;
     }
     .card-body {
-      padding: 18px 20px 20px;
+      padding: 22px 24px 24px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -233,18 +441,25 @@
     }
     .card-head h3 {
       margin: 0;
-      font-size: 20px;
+      font-size: 22px;
       line-height: 1.3;
     }
     .role {
       flex: none;
-      padding: 4px 9px;
+      padding: 5px 10px;
       border-radius: 999px;
-      background: #f3f4f6;
-      color: #374151;
-      font-size: 12px;
-      border: 1px solid var(--line);
+      background: #f8fafc;
+      color: #64748b;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid #dbe3ef;
       white-space: nowrap;
+    }
+    .role-primary {
+      background: #fff7ed;
+      color: #9a3412;
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.14);
     }
     .tags {
       display: flex;
@@ -258,19 +473,19 @@
       background: #f3f4f6;
       color: #374151;
       padding: 4px 9px;
-      font-size: 12px;
+      font-size: 13px;
       line-height: 1.2;
     }
     .desc {
       margin: 0;
       color: #374151;
-      font-size: 14.5px;
+      font-size: 15.5px;
     }
     .work-list {
       margin: 0;
       padding-left: 18px;
       color: #4b5563;
-      font-size: 14px;
+      font-size: 15px;
     }
     .work-list li { margin: 3px 0; }
     .result {
@@ -278,7 +493,7 @@
       padding-top: 10px;
       border-top: 1px solid var(--line);
       color: #374151;
-      font-size: 14px;
+      font-size: 15px;
     }
     .result strong { color: #111827; }
 
@@ -296,24 +511,41 @@
       text-align: center;
       color: #6b7280;
       padding: 34px 20px 42px;
-      font-size: 14px;
+      font-size: 15px;
     }
 
     @media (max-width: 900px) {
-      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .summary-points { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: 1fr; }
       .demo-grid { grid-template-columns: 1fr; }
+      .demo-card-wide { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      header { padding: 40px 18px 32px; }
-      main { padding: 0 16px; }
-      .summary { padding: 18px; }
-      .metrics { grid-template-columns: 1fr; }
+      header { padding: 46px 18px 36px; }
+      h1 { font-size: 32px; }
+      main { padding: 0 16px; margin-top: 26px; }
+      .nav-inner { justify-content: flex-start; }
+      .summary { padding: 22px; }
+      .metric-stats { grid-template-columns: 1fr; }
       .card-head { flex-direction: column; }
       .role { width: fit-content; }
     }
   </style>
 </head>
-<body>
+<body class="is-locked">
+  <div class="password-gate" role="dialog" aria-modal="true" aria-labelledby="password-title">
+    <div class="password-panel">
+      <h2 id="password-title">访问受保护</h2>
+      <p>请输入访问密码后查看人形机器人强化学习运控 Demo。</p>
+      <form class="password-form" id="passwordForm">
+        <label for="accessPassword">访问密码</label>
+        <input id="accessPassword" type="password" autocomplete="current-password" placeholder="请输入密码" autofocus />
+        <button type="submit">进入网站</button>
+        <div class="password-error" id="passwordError" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
   <header>
     <div class="hero">
       <p class="eyebrow">Humanoid Robot RL Motion Control Portfolio</p>
@@ -327,20 +559,50 @@
       <a href="#kepler">上海开普勒机器人</a>
       <a href="#zhongyu">河南中豫具身智能实验室</a>
       <a href="#joyson">上海卓益得机器人</a>
-      <a href="#note">视频文件说明</a>
     </div>
   </nav>
 
   <main>
     <section class="summary">
       <h2>个人简介</h2>
-      <p>具备人形机器人强化学习运动控制算法研发与实物部署经验，熟悉从动作重定向、仿真训练、Sim-to-Sim 验证到真实机器人部署的完整技术链路。</p>
-      <p>项目覆盖 K2 拟人大步长步态、太极舞蹈动作、行者2号长距离行走与小跑、X02 打拳动作模仿，以及小跑、无视野上楼梯、扭胯式行走、全身遥操作链路复现等任务。</p>
+      <div class="summary-points">
+        <div class="summary-point">
+          <strong>强化学习运动控制与实物部署</strong>
+          <span>具备人形机器人强化学习运动控制算法研发与实物部署经验，熟悉从动作重定向、仿真训练、Sim-to-Sim 验证到真实机器人部署的完整技术链路。</span>
+        </div>
+        <div class="summary-point">
+          <strong>多项目真实机器人验证经验</strong>
+          <span>项目覆盖 K2 拟人大步长步态、太极舞蹈动作、行者2号长距离行走与小跑、X02 打拳动作模仿，以及小跑、无视野上楼梯、扭胯式行走、全身遥操作链路复现等任务。</span>
+        </div>
+      </div>
       <div class="metrics">
-        <div class="metric"><strong>0.8 m/s</strong><span>K2 拟人大步长步态稳定行走速度</span></div>
-        <div class="metric"><strong>1.5 脚掌</strong><span>K2 拟人大步长步态步长</span></div>
-        <div class="metric"><strong>8 小时</strong><span>出厂包压测稳定运行无异常</span></div>
-        <div class="metric"><strong>第三名</strong><span>行者2号半程马拉松项目成果</span></div>
+        <div class="metric metric-feature">
+          <strong>K2 拟人大步长步态</strong>
+          <span>完成训练、Sim-to-Sim 验证、真实机器人部署与产品出厂包测试。</span>
+          <div class="metric-stats">
+            <div class="metric-stat"><b>0.8 m/s</b><small>稳定行走速度</small></div>
+            <div class="metric-stat"><b>1.5 脚掌</b><small>拟人大步长</small></div>
+            <div class="metric-stat"><b>8 小时</b><small>压测无异常</small></div>
+          </div>
+        </div>
+        <div class="metric metric-feature">
+          <strong>K2 太极舞蹈</strong>
+          <span>完成全身动作跟踪训练、Sim-to-Sim 验证与真实机器人功能测试。</span>
+          <div class="metric-stats">
+            <div class="metric-stat"><b>PHC</b><small>动作重定向</small></div>
+            <div class="metric-stat"><b>ASAP</b><small>跟踪训练</small></div>
+            <div class="metric-stat"><b>实物测试</b><small>产品功能集成</small></div>
+          </div>
+        </div>
+        <div class="metric metric-feature">
+          <strong>行者2号半程马拉松</strong>
+          <span>参与长距离行走与小跑策略训练配合、实物部署调试和比赛场景验证。</span>
+          <div class="metric-stats">
+            <div class="metric-stat"><b>第三名</b><small>团队比赛成果</small></div>
+            <div class="metric-stat"><b>长距离</b><small>真实赛道验证</small></div>
+            <div class="metric-stat"><b>小跑</b><small>实物调参部署</small></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -348,20 +610,20 @@
       <div class="company-title">
         <div class="company-badge"><span class="dot"></span>运控算法实习生｜2025.06 - 至今</div>
         <h2>上海开普勒机器人有限公司</h2>
-        <p>主要负责 K2 拟人大步长步态与太极舞蹈动作实现；参与小跑、无视野上楼梯、扭胯式行走等运动能力开发，并参与 TWIST 全身遥操作框架的初步实物验证。</p>
+        <p>主要负责 K2 拟人大步长步态与太极舞蹈动作实现；参与小跑、无视野上楼梯等运动能力开发与真实机器人验证。</p>
       </div>
 
       <div class="demo-grid">
         <article class="demo-card">
           <div class="video-box">
-            <video controls preload="metadata" poster="images/k2_humanoid_stride.jpg">
-              <source src="videos/k2_humanoid_stride.mp4" type="video/mp4" />
+            <video controls loop preload="metadata">
+              <source src="videos/walk.mp4" type="video/mp4" />
               当前浏览器不支持 video 标签。
             </video>
             <div class="video-placeholder">K2 Humanoid Long-stride Gait Demo</div>
           </div>
           <div class="card-body">
-            <div class="card-head"><h3>K2 拟人大步长步态实物部署</h3><span class="role">主要负责</span></div>
+            <div class="card-head"><h3>K2 拟人大步长步态实物部署</h3><span class="role role-primary">主要负责</span></div>
             <div class="tags"><span class="tag">强化学习步态控制</span><span class="tag">Sim-to-Real</span><span class="tag">产品交付</span></div>
             <p class="desc">面向 K2 人形机器人产品化行走能力，完成拟人大步长步态的训练、Sim-to-Sim 验证、真实机器人部署和出厂包测试。</p>
             <ul class="work-list">
@@ -373,15 +635,24 @@
         </article>
 
         <article class="demo-card">
-          <div class="video-box">
-            <video controls preload="metadata" poster="images/k2_taichi_dance.jpg">
-              <source src="videos/k2_taichi_dance.mp4" type="video/mp4" />
-              当前浏览器不支持 video 标签。
-            </video>
-            <div class="video-placeholder">K2 Taichi Dance Demo</div>
+          <div class="video-list video-list-vertical">
+            <div class="video-box video-box-vertical">
+              <video controls loop preload="metadata" poster="images/k2_taichi_dance.jpg">
+                <source src="videos/taichi_1.mp4" type="video/mp4" />
+                当前浏览器不支持 video 标签。
+              </video>
+              <div class="video-placeholder">K2 Taichi Dance Demo 1</div>
+            </div>
+            <div class="video-box video-box-vertical">
+              <video controls loop preload="metadata" poster="images/k2_taichi_dance.jpg">
+                <source src="videos/taichi_2.mp4" type="video/mp4" />
+                当前浏览器不支持 video 标签。
+              </video>
+              <div class="video-placeholder">K2 Taichi Dance Demo 2</div>
+            </div>
           </div>
           <div class="card-body">
-            <div class="card-head"><h3>K2 太极舞蹈动作与全身跟踪控制</h3><span class="role">主要负责</span></div>
+            <div class="card-head"><h3>K2 太极舞蹈动作与全身跟踪控制</h3><span class="role role-primary">主要负责</span></div>
             <div class="tags"><span class="tag">PHC / GMR 重定向</span><span class="tag">ASAP</span><span class="tag">全身动作跟踪</span></div>
             <p class="desc">通过 PHC / GMR 完成人体动作到机器人关节空间映射，基于 ASAP 完成训练、Sim-to-Sim 验证与真实机器人部署。</p>
             <ul class="work-list">
@@ -394,11 +665,11 @@
 
         <article class="demo-card">
           <div class="video-box">
-            <video controls preload="metadata" poster="images/k2_trot.jpg">
-              <source src="videos/k2_trot.mp4" type="video/mp4" />
+            <video controls loop preload="metadata" poster="images/k2_trot.jpg">
+              <source src="videos/run.mp4" type="video/mp4" />
               当前浏览器不支持 video 标签。
             </video>
-            <div class="video-placeholder">K2 Trot Demo</div>
+            <div class="video-placeholder">K2 Run Demo</div>
           </div>
           <div class="card-body">
             <div class="card-head"><h3>K2 小跑功能</h3><span class="role">参与</span></div>
@@ -410,8 +681,8 @@
 
         <article class="demo-card">
           <div class="video-box">
-            <video controls preload="metadata" poster="images/k2_stairs_blind.jpg">
-              <source src="videos/k2_stairs_blind.mp4" type="video/mp4" />
+            <video controls loop preload="metadata" poster="images/k2_stairs_blind.jpg">
+              <source src="videos/stair.mp4" type="video/mp4" />
               当前浏览器不支持 video 标签。
             </video>
             <div class="video-placeholder">K2 Blind Stair Climbing Demo</div>
@@ -424,37 +695,6 @@
           </div>
         </article>
 
-        <article class="demo-card">
-          <div class="video-box">
-            <video controls preload="metadata" poster="images/k2_hip_sway_walk.jpg">
-              <source src="videos/k2_hip_sway_walk.mp4" type="video/mp4" />
-              当前浏览器不支持 video 标签。
-            </video>
-            <div class="video-placeholder">K2 Hip-sway Walk Demo</div>
-          </div>
-          <div class="card-body">
-            <div class="card-head"><h3>K2 扭胯式行走</h3><span class="role">参与</span></div>
-            <div class="tags"><span class="tag">拟人运动</span><span class="tag">步态风格</span><span class="tag">运动展示</span></div>
-            <p class="desc">参与扭胯式行走功能开发，探索更接近人体运动风格的躯干与髋部协同控制方式。</p>
-            <div class="result"><strong>展示内容：</strong>扭胯式行走动作效果验证片段。</div>
-          </div>
-        </article>
-
-        <article class="demo-card">
-          <div class="video-box">
-            <video controls preload="metadata" poster="images/twist_upper_body.jpg">
-              <source src="videos/twist_upper_body.mp4" type="video/mp4" />
-              当前浏览器不支持 video 标签。
-            </video>
-            <div class="video-placeholder">TWIST Upper-body Reproduction Demo</div>
-          </div>
-          <div class="card-body">
-            <div class="card-head"><h3>TWIST 全身遥操作框架复现</h3><span class="role">参与</span></div>
-            <div class="tags"><span class="tag">TWIST</span><span class="tag">遥操作链路</span><span class="tag">上肢动作复现</span></div>
-            <p class="desc">参与 TWIST 全身遥操作框架复现与链路打通；目前仿真端可完成动作复现，实物端实现原地站立状态下的上肢动作复现。</p>
-            <div class="result"><strong>说明：</strong>尚未接入 VR 遥操，当前主要验证动作复现与实物链路。</div>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -467,12 +707,21 @@
 
       <div class="demo-grid">
         <article class="demo-card">
-          <div class="video-box">
-            <video controls preload="metadata" poster="images/walker2_marathon.jpg">
-              <source src="videos/walker2_marathon.mp4" type="video/mp4" />
-              当前浏览器不支持 video 标签。
-            </video>
-            <div class="video-placeholder">Walker 2 Marathon Demo</div>
+          <div class="video-list video-list-vertical">
+            <div class="video-box video-box-vertical">
+              <video controls loop preload="metadata" poster="images/walker2_marathon.jpg">
+                <source src="videos/x02_run_sim.mp4" type="video/mp4" />
+                当前浏览器不支持 video 标签。
+              </video>
+              <div class="video-placeholder">K2 Taichi Dance Demo 1</div>
+            </div>
+            <div class="video-box video-box-vertical">
+              <video controls loop preload="metadata" poster="images/walker2_marathon.jpg">
+                <source src="videos/x02_run_real.mp4" type="video/mp4" />
+                当前浏览器不支持 video 标签。
+              </video>
+              <div class="video-placeholder">K2 Taichi Dance Demo 2</div>
+            </div>
           </div>
           <div class="card-body">
             <div class="card-head"><h3>行者2号长距离行走与小跑</h3><span class="role">参与</span></div>
@@ -485,6 +734,16 @@
             <div class="result"><strong>成果：</strong>项目成果应用于 2025 年北京亦庄全球首场人形机器人半程马拉松比赛，团队获得第三名。</div>
           </div>
         </article>
+
+        <article class="demo-card">
+          <img class="achievement-image" src="images/third.jpg" alt="行者2号半程马拉松第三名成果展示图" />
+          <div class="card-body">
+            <div class="card-head"><h3>半程马拉松比赛成果</h3><span class="role role-primary">第三名</span></div>
+            <div class="tags"><span class="tag">真实赛道验证</span><span class="tag">长距离稳定性</span><span class="tag">团队成果</span></div>
+            <p class="desc">项目成果应用于 2025 年北京亦庄全球首场人形机器人半程马拉松比赛，围绕长距离行走、小跑策略和实物调试完成比赛场景验证。</p>
+            <div class="result"><strong>成果：</strong>团队获得第三名，验证了策略在真实机器人长距离任务中的稳定性与部署效果。</div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -492,17 +751,26 @@
       <div class="company-title">
         <div class="company-badge"><span class="dot"></span>算法实习生｜2023.10 - 2025.01</div>
         <h2>上海卓益得机器人有限公司</h2>
-        <p>主要参与 X02 人形机器人全身动作模仿强化学习项目，并跟进复现 AMP、H2O、ExBody、HumanPlus、DeepMimic 等前沿算法框架。</p>
+        <p>主要参与 X02 人形机器人全身动作模仿强化学习项目，以及国内首个人机共演话剧《巨物之城》的多机器人舞台部署与协同控制。</p>
       </div>
 
       <div class="demo-grid">
-        <article class="demo-card">
-          <div class="video-box">
-            <video controls preload="metadata" poster="images/x02_punch.jpg">
-              <source src="videos/x02_punch.mp4" type="video/mp4" />
-              当前浏览器不支持 video 标签。
-            </video>
-            <div class="video-placeholder">X02 Punch Imitation Demo</div>
+        <article class="demo-card demo-card-wide">
+          <div class="video-list video-list-pair">
+            <div class="video-box">
+              <video controls loop preload="metadata" poster="images/x02_punch.jpg">
+                <source src="videos/x02_1.mp4" type="video/mp4" />
+                当前浏览器不支持 video 标签。
+              </video>
+              <div class="video-placeholder">X02 Punch Imitation Demo 1</div>
+            </div>
+            <div class="video-box">
+              <video controls loop preload="metadata" poster="images/x02_punch.jpg">
+                <source src="videos/x02_2.mp4" type="video/mp4" />
+                当前浏览器不支持 video 标签。
+              </video>
+              <div class="video-placeholder">X02 Punch Imitation Demo 2</div>
+            </div>
           </div>
           <div class="card-body">
             <div class="card-head"><h3>X02 打拳动作模仿强化学习</h3><span class="role">参与</span></div>
@@ -516,14 +784,61 @@
             <div class="result"><strong>成果：</strong>完成打拳动作真实上机测试，积累高动态全身动作实物迁移经验。</div>
           </div>
         </article>
+
+        <article class="demo-card demo-card-wide">
+          <div class="image-gallery" aria-label="巨物之城多机器人舞台部署图片">
+            <img src="images/jw_1.jpg" alt="巨物之城多机器人舞台部署现场 1" />
+            <img src="images/jw_2.jpg" alt="巨物之城多机器人舞台部署现场 2" />
+            <img src="images/jw_3.jpg" alt="巨物之城多机器人舞台部署现场 3" />
+            <img src="images/jw_4.jpg" alt="巨物之城多机器人舞台部署现场 4" />
+          </div>
+          <div class="card-body">
+            <div class="card-head"><h3>国内首个人机共演话剧项目《巨物之城》</h3><span class="role role-primary">主要负责</span></div>
+            <div class="tags"><span class="tag">多机器人控制</span><span class="tag">ROS</span><span class="tag">Qt</span><span class="tag">舞台部署</span><span class="tag">人机协同</span></div>
+            <p class="desc">面向国内首个人机共演话剧《巨物之城》的舞台演出场景，负责多类实物机器人在话剧中的运动部署与舞台协同。</p>
+            <ul class="work-list">
+              <li>基于 Qt 控制界面与 ROS 通信链路，同时控制双足机器人、TIAGo 机器人、蛇型机器人和仿生机器人等多类实物平台。</li>
+              <li>结合剧本内容和舞台调度需求，完成机器人动作触发和舞台走位，保障机器人与真人演员、灯光音效及舞美元素协同。</li>
+            </ul>
+            <div class="result"><strong>成果：</strong>支撑《巨物之城》完成多机器人与真人话剧演员协同表演，积累复杂现场环境下多机器人实物部署、系统集成和人机协同调度经验。</div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="note" class="note">
-      <strong>视频文件说明：</strong>请将视频文件放入仓库的 <code>videos/</code> 文件夹，并保持页面中的文件名一致。建议视频压缩为 MP4，单个视频尽量控制在 20-50 MB 以内，以提升 GitHub Pages 加载速度。
-    </section>
   </main>
 
   <footer>© 2026 王长峰｜Humanoid Robot RL Motion Control Demo</footer>
+  <script>
+    (() => {
+      const ACCESS_PASSWORD = "wcf2026";
+      const STORAGE_KEY = "humanoidDemoUnlocked";
+      const form = document.querySelector("#passwordForm");
+      const input = document.querySelector("#accessPassword");
+      const error = document.querySelector("#passwordError");
+
+      function unlock() {
+        document.body.classList.remove("is-locked");
+      }
+
+      if (sessionStorage.getItem(STORAGE_KEY) === "true") {
+        unlock();
+        return;
+      }
+
+      input.focus();
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        if (input.value === ACCESS_PASSWORD) {
+          sessionStorage.setItem(STORAGE_KEY, "true");
+          unlock();
+        } else {
+          error.textContent = "密码不正确，请重新输入。";
+          input.value = "";
+          input.focus();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
